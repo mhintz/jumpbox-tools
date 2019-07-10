@@ -1,7 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set syntax on
 colorscheme desert
 
 set tabstop=4

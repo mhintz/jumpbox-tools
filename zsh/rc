@@ -13,3 +13,7 @@ fpath=(~/.jumpbox-tools/zsh/completion $fpath)
 source ~/.jumpbox-tools/zsh/aliases
 source ~/.jumpbox-tools/zsh/helpers
 source $ZSH/oh-my-zsh.sh
+
+alias v=vim
+export EDITOR=vim
+

@@ -6,9 +6,25 @@ environmentuc(){
     cat /opt/datadog/etc/environment | cut -c 5- | tr '[a-z]' '[A-Z]'
 }
 
-mainroles(){
-    cat /etc/update-motd.d/95-roles | tail -n+5 | grep -vE '^Instance Type:|^\*\*|^$' | grep -Ev 'common-node|monitoring-client|dog-base|encrypted-storage' | paste -d',' -s -
+mainroles() {
+    cat /etc/update-motd.d/95-roles |\
+    tail -n+5 |\
+    grep -vE '^Instance Type:|^\*\*|^$' |\
+    grep -Ev 'common-node|monitoring-client|dog-base|encrypted-storage' |\
+    sed '/Tags:/,$d' |\
+    grep -v "Roles:" |\
+    paste -d',' -s -
 }
+
+ maintags() {
+    cat /etc/update-motd.d/95-roles |\
+    tail -n+5 |\
+    grep -vE '^Instance Type:|^\*\*|^$' |\
+    grep -Ev 'common-node|monitoring-client|dog-base|encrypted-storage' |\
+    sed -n '/Tags:/,$p' |\
+    grep -v "Tags:" |\
+    paste -d',' -s -
+ }
 
 refreshtools(){
     cd ~/.jumpbox-tools

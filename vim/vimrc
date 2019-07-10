@@ -1,7 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-colorscheme delek
+set syntax on
+colorscheme desert
 
 set tabstop=4
 set shiftwidth=4
@@ -16,3 +17,49 @@ map gd :bd<cr>
 
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+
+set number
+set relativenumber
+
+let mapleader = " "
+
+" file editing
+nnoremap <leader>wq :wq<CR>
+nnoremap s :w<CR>
+nnoremap <leader>qq :bp\|bd #<CR>
+nnoremap <leader>qw :q<CR>
+nnoremap <leader>qa :qa<CR>
+nnoremap <leader>qc :%bdelete<CR>
+nnoremap <leader><leader> :e#<CR>
+noremap <leader><Left> :bprev<CR>
+noremap <leader><Right> :bnext<CR>
+
+" quick movement
+noremap <M-n> 6<C-e>6j
+noremap <M-m> 6<C-y>6k
+noremap <M-j> 6j
+noremap <M-k> 6k
+noremap <C-M-n> 6<C-e>
+noremap <C-M-m> 6<C-y>
+noremap <M-d> <C-d>
+noremap <M-u> <C-u>
+noremap <M-f> <C-f>
+noremap <M-b> <C-b>
+noremap <C-a> ^
+noremap <C-e> $
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+" paste helper
+nnoremap <leader>v :set paste<CR>"*gP:set nopaste<CR>
+
+" delete helper
+inoremap <C-k> <C-o>d$
+
+" move lines of text around vertically
+nnoremap <C-M-j> mz:m+<cr>`z
+nnoremap <C-M-k> mz:m-2<cr>`z
+vnoremap <C-M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vnoremap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
